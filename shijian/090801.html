@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style type="text/css">
+#shijian {
+	font-size: 24px;
+	font-weight: bolder;
+	color: #F00;
+}
+</style>
+<script>
+	function buling(x)
+	{
+		if(x>=0 && x<=9)
+		{
+			x="0"+x;
+		}
+		return x;
+	}
+	function danci()
+	{
+	var m=new Date();
+	var nian=m.getFullYear();
+	var yue=m.getMonth();
+		yue=yue+1;
+	var ri=m.getDate();
+	var xingqi=m.getDay();
+		var xingqiji;
+		switch(xingqi)
+		{
+			case 0:
+				xingqiji="日";
+				break;
+			case 1:
+				xingqiji="一";
+				break;
+			case 2:
+				xingqiji="二";
+				break;
+			case 3:
+				xingqiji="三";
+				break;
+			case 4:
+				xingqiji="四";
+				break;
+			case 5:
+				xingqiji="五";
+				break;
+			case 6:
+				xingqiji="六";
+				break;
+		}
+	var shi=m.getHours();
+		shi=buling(shi);
+	var fen=m.getMinutes();
+		fen=buling(fen);
+	var miao=m.getSeconds();
+		miao=buling(miao);
+	var zifuchuan=nian+"年"+(yue+1)+"月"+ri+"日　星期"+xingqiji+"　"+shi+":"+fen+":"+miao;
+	document.getElementById("shijian").innerHTML=zifuchuan;
+	}
+	function zoudong()
+	{
+		danci();
+		window.setTimeout("zoudong()",1000);
+	}
+</script>
+
+</head>
+
+<body onLoad="zoudong()">
+<span id="shijian"></span>
+</body>
+</html>
